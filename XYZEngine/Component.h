@@ -1,0 +1,22 @@
+#pragma once
+
+namespace XYZEngine
+{
+	class GameObject;
+
+	class Component
+	{
+	public:
+
+		Component(GameObject* gameObject);
+		Component();
+		virtual ~Component();
+
+		virtual void Update(float deltaTime) = 0;
+		virtual void Render() = 0;
+
+		GameObject* GetGameObject();
+	protected:
+		GameObject* gameObject;
+	};
+}
