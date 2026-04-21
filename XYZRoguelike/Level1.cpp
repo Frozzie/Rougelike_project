@@ -87,18 +87,14 @@ namespace XYZRoguelike
 
         //roamers = std::make_unique<Roamers>();
 
+        // Maze Generator
+        MazeGenerator mazeGenerator(width, height, this);
+        mazeGenerator.Generate();
+
+        //int num = Get_cur_lvl();
+
         player = std::make_unique<Player>(std::forward<XYZEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
 
         // music = std::make_unique<Music>("music");
-    }
-
-    void Level1::Restart()
-    {
-        Stop();
-        Start();
-    }
-    void Level1::Stop()
-    {
-        GameWorld::Instance()->Clear();
     }
 }

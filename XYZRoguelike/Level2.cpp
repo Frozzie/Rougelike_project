@@ -1,5 +1,5 @@
 
-#include "DeveloperLevel.h"
+#include "Level2.h"
 #include "MazeGenerator.h"
 #include "Wall.h"
 
@@ -7,7 +7,7 @@ using namespace XYZEngine;
 
 namespace XYZRoguelike
 {
-    void DeveloperLevel::Start()
+    void Level2::Start()
     {
         int width = 15;
         int height = 15;
@@ -87,22 +87,8 @@ namespace XYZRoguelike
 
         //roamers = std::make_unique<Roamers>();
 
-        // Maze Generator
-        MazeGenerator mazeGenerator(width, height, this);
-        mazeGenerator.Generate();
-
         player = std::make_unique<Player>(std::forward<XYZEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
 
         // music = std::make_unique<Music>("music");
     }
-    void DeveloperLevel::Restart()
-    {
-        Stop();
-        Start();
-    }
-    void DeveloperLevel::Stop()
-    {
-        GameWorld::Instance()->Clear();
-    }
-
-} // namespace XYZRoguelike
+}

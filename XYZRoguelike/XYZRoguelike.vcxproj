@@ -164,7 +164,6 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BlockFactory.cpp" />
     <ClCompile Include="Bonus.cpp" />
-    <ClCompile Include="DeveloperLevel.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -172,6 +171,7 @@
     <ClCompile Include="GameStateGameWin.cpp" />
     <ClCompile Include="Level1.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
+    <ClCompile Include="Level2.cpp" />
     <ClCompile Include="MazeGenerator.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Platform.cpp" />
@@ -206,6 +206,7 @@
     <ClInclude Include="IObserver.h" />
     <ClInclude Include="Level1.h" />
     <ClInclude Include="LevelLoader.h" />
+    <ClInclude Include="Level2.h" />
     <ClInclude Include="MazeGenerator.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Platform.h" />

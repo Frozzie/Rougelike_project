@@ -21,16 +21,16 @@ namespace XYZEngine
 		setupLogger();
 	}
 
-	void Engine::Run()
+	void Engine::Run(sf::Time dt)
 	{
-		sf::Clock gameClock;
+		//sf::Clock gameClock;
 		sf::Event event;
 
-		LOG_INFO("Program was started!");
+		//LOG_INFO("Program was started!");
 		
-		while (RenderSystem::Instance()->GetMainWindow().isOpen() /*&& LevelTransition func*/)
-		{
-			sf::Time dt = gameClock.restart();
+		//while (RenderSystem::Instance()->GetMainWindow().isOpen() /*&& LevelTransition func*/)
+		//{
+			//sf::Time dt = gameClock.restart();
 			float deltaTime = dt.asSeconds();
 
 			while (RenderSystem::Instance()->GetMainWindow().pollEvent(event))
@@ -41,10 +41,10 @@ namespace XYZEngine
 				}
 			}
 
-			if (!RenderSystem::Instance()->GetMainWindow().isOpen())
+			/*if (!RenderSystem::Instance()->GetMainWindow().isOpen())
 			{
 				break;
-			}
+			}*/
 
 			RenderSystem::Instance()->GetMainWindow().clear();
 
@@ -53,21 +53,8 @@ namespace XYZEngine
 			GameWorld::Instance()->Render();
 			GameWorld::Instance()->LateUpdate();
 
-			
-			
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-			{
-				XYZEngine::Engine::Instance()->Set_cur_lvl(1);
-				break;
-			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-			{
-				XYZEngine::Engine::Instance()->Set_cur_lvl(2);
-				break;
-			}
-
 			RenderSystem::Instance()->GetMainWindow().display();
-		}
+		//}
 	}
 
 	void Engine::setupLogger()

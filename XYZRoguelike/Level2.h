@@ -7,7 +7,6 @@
 #include "Roamer.h"
 #include "Scene.h"
 #include "Wall.h"
-#include "Engine.h"
 #include <array>
 #include <iostream>
 
@@ -15,7 +14,7 @@ using namespace XYZEngine;
 
 namespace XYZRoguelike
 {
-    class Level1 : public DeveloperLevel//, public Engine
+    class Level2 : public DeveloperLevel
     {
     public:
 

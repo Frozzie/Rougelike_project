@@ -16,13 +16,28 @@ namespace XYZRoguelike
 class DeveloperLevel : public Scene
 {
   public:
-    virtual void Start();
-    void Restart() override;
-    void Stop() override;
+    virtual void Start() = 0;
+
+    void Restart()
+    {
+        Stop();
+        Start();
+    }
+    void Stop()
+    {
+        GameWorld::Instance()->Clear();
+    }
+    std::shared_ptr<Player> GetPlayer()
+    {
+		return player;
+    }
+
 
     std::vector<std::unique_ptr<Wall>> walls;
     std::vector<std::unique_ptr<Floor>> floors;
     std::vector<std::unique_ptr<Roamer>> roamers;
+    std::shared_ptr<Player> player;
+    std::unique_ptr<Music> music;
     
     //std::shared_ptr<Roamers> roamers; // needs to be shared_ptr
     //Roamers* roamers;
@@ -37,8 +52,6 @@ class DeveloperLevel : public Scene
     //}
 
   private:
-    
-    std::shared_ptr<Player> player;
-    std::unique_ptr<Music> music;
+
 };
 } // namespace XYZRoguelike

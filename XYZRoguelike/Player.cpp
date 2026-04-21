@@ -33,6 +33,17 @@ Player::Player(const XYZEngine::Vector2Df &position)
 
     auto collider = gameObject->AddComponent<XYZEngine::SpriteColliderComponent>();
 
+    //std::function<void(XYZEngine::Collision)> exit;
+    //// Function for flipping direction after a collision
+    //exit = [](XYZEngine::Collision collision) {
+    //    if (collision.getCollider()->GetGameObject()->GetName() != collision.getCollidee()->GetGameObject()->GetName() &&
+    //        collision.getCollidee()->GetGameObject()->GetName() == "Wall")
+    //    {
+    //        
+    //    }
+    //};
+    //collider->SubscribeCollision(exit);
+
     auto animator = gameObject->AddComponent<XYZEngine::SpriteMovementAnimationComponent>();
     animator->Initialize("player", 6.f);
 }
@@ -44,7 +55,7 @@ XYZEngine::GameObject *Player::GetGameObject()
 
 void Player::Update(float DeltaTime)
 {
-    
+    // doesnt work, plus cant go into the engine to do anything
 }
 
 void Player::Render()

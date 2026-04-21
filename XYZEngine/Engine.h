@@ -13,7 +13,7 @@ namespace XYZEngine
 
 		static Engine* Instance();
 
-		void Run();
+		void Run(sf::Time dt);
 
 		int Get_cur_lvl();
 		void Set_cur_lvl(int num);
