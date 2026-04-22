@@ -79,13 +79,16 @@ namespace XYZRoguelike
         // Loop to spawn the roamers after maze generation
         while (stackMem.empty() == false)
         {
+            XYZEngine::Vector2Df vector;
             std::pair<int, int> pos = stackMem.top();
             stackMem.pop();
+            vector.x = pos.first;
+            vector.y = pos.second;
 
-            level->roamers.push_back(std::make_unique<Roamer>()); // gives a unresolved external symbol error, idk how to fix cuz everything seems fine
+            level->roamers.push_back(std::make_unique<Roamer>(vector)); // gives a unresolved external symbol error, idk how to fix cuz everything seems fine
 
 			auto gameObject = level->roamers.back()->GetGameObject(); // second error here, no idea how to fix
-            gameObject.GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(pos.first, pos.second);
+            gameObject.GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(vector);
         }
     }
 

@@ -25,7 +25,7 @@ int main()
     XYZEngine::ResourceSystem::Instance()->LoadSound("music", "Resources/Sounds/AppleEat.wav");
 
     bool lvl_switch = true;
-    bool flag = false;
+    bool flag = true;
     
     std::shared_ptr<XYZRoguelike::DeveloperLevel> lvl_1 = std::make_shared<XYZRoguelike::Level1>();
     std::shared_ptr<XYZRoguelike::DeveloperLevel> lvl_2 = std::make_shared<XYZRoguelike::Level2>();
@@ -47,7 +47,7 @@ int main()
 			//cur_lvl = lvl_1; // Sets current level to new level
 			lvl_1->Start(); // Starts new level
 			lvl_switch = false; // Resets flag to make sure the switch only happens once per level change
-            dt = sf::Time::Zero;
+            dt = sf::Time::Zero + sf::seconds(01.f);
         }
         else if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 2 && lvl_switch)
         {
@@ -55,14 +55,16 @@ int main()
             //cur_lvl = lvl_2;
             lvl_2->Start();
             lvl_switch = false;
-            dt = sf::Time::Zero;
+            dt = sf::Time::Zero + sf::seconds(01.f);
         }
         
         XYZEngine::Engine::Instance()->Run(dt); //freaks out for a few frames then calms down to normal, cause unknown
+        //roamer update is making it crash i think
 
-        if(XYZEngine::Engine::Instance()->Get_cur_lvl() == 1)
+
+        /*if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 1)
         {
-            if (lvl_1->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f /*&& flag*/)
+            if (lvl_1->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f && flag)
             {
                 XYZEngine::Engine::Instance()->Set_cur_lvl(2);
                 lvl_switch = true;
@@ -70,12 +72,12 @@ int main()
 		}
         else if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 2)
         {
-            if (lvl_2->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f /*&& flag*/)
+            if (lvl_2->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f && flag)
             {
                 XYZEngine::Engine::Instance()->Set_cur_lvl(1);
                 lvl_switch = true;
             }
-        }
+        }*/
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
         {

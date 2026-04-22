@@ -47,7 +47,10 @@ namespace XYZEngine
 	{
 		for (auto& component : components)
 		{
-			component->Update(deltaTime);
+			// if (component->GetGameObject()->name != NULL)
+			{
+				component->Update(deltaTime);
+			}
 		}
 	}
 	void GameObject::Render()

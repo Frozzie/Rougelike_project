@@ -14,8 +14,8 @@ class Roamer : public XYZEngine::Component
 {
   public:
 
-    Roamer();
-    Roamer(XYZEngine::GameObject *gameObject);
+    //Roamer();
+    //Roamer(XYZEngine::GameObject *gameObject);
     Roamer(const XYZEngine::Vector2Df vector);
 
     void Update(float DeltaTime) override;
