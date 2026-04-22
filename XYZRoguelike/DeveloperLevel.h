@@ -32,24 +32,20 @@ class DeveloperLevel : public Scene
 		return player;
     }
 
-
     std::vector<std::unique_ptr<Wall>> walls;
     std::vector<std::unique_ptr<Floor>> floors;
     std::vector<std::unique_ptr<Roamer>> roamers;
     std::shared_ptr<Player> player;
     std::unique_ptr<Music> music;
-    
-    //std::shared_ptr<Roamers> roamers; // needs to be shared_ptr
-    //Roamers* roamers;
 
-    //DeveloperLevel()
-    //{
-    //    volatile int i = 1;
-    //    i++;
-    //    
-    //    roamers = new Roamers;
-    //    //roamers = std::shared_ptr<Roamers>(new Roamers); //Source of error
-    //}
+    DeveloperLevel()
+    {
+        /*volatile int i = 1;
+        i++;*/
+        
+        //roamers = new Roamer;
+        //roamers = std::shared_ptr<Roamer>(new Roamer); // temp code? may be removed
+    }
 
   private:
 

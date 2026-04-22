@@ -85,10 +85,10 @@ namespace XYZRoguelike
             }
         }
 
-        //roamers = std::make_unique<Roamers>();
+        roamers.push_back(std::make_unique<Roamer>()); // Gives a error that i cannot figure out how to fix
 
         player = std::make_unique<Player>(std::forward<XYZEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
 
-        // music = std::make_unique<Music>("music");
+        music = std::make_unique<Music>("music"); // needs to be a better audio file, way too annoying on the ears
     }
 }

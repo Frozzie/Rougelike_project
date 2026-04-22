@@ -20,6 +20,7 @@ class Roamer : public XYZEngine::Component
 
     void Update(float DeltaTime) override;
     void Render() override;
+    XYZEngine::GameObject GetGameObject();
 
     XYZEngine::Vector2Df Dir;
 

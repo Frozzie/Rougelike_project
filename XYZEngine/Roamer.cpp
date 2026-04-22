@@ -36,7 +36,7 @@ Roamer::Roamer()
     gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Roamer");
 
     auto transform = gameObject->GetComponent<XYZEngine::TransformComponent>();
-    transform->SetWorldPosition(vector);
+    transform->SetWorldPosition({0, 0});
     transform->SetDir(Dir);
 
     auto renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
@@ -46,12 +46,14 @@ Roamer::Roamer()
     auto rigidbody = gameObject->AddComponent<XYZEngine::RigidbodyComponent>();
     rigidbody->SetKinematic(false);
 
-    /*auto HP = gameObject->AddComponent<XYZEngine::HealthManager>();
+    auto HP = gameObject->AddComponent<XYZEngine::HealthManager>();
     HP->Health_set(100);
-    HP->Armor_set(0);*/
+    HP->Armor_set(0);
 
     std::function<void(XYZEngine::Collision)> flip;
+
     // Function for flipping direction after a collision
+
     flip = [](XYZEngine::Collision collision) {
         if (collision.getCollider()->GetGameObject()->GetName() != collision.getCollidee()->GetGameObject()->GetName())
         {
@@ -99,11 +101,12 @@ Roamer::Roamer()
 
 Roamer::Roamer(XYZEngine::GameObject *gameObj) : Roamer()
 {
+	gameObject = gameObj;
 }
 
 Roamer::Roamer(XYZEngine::Vector2Df vector) : Roamer()
 {
-    
+	gameObject->GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(vector);
 }
 
 void Roamer::Update(float DeltaTime)
@@ -121,4 +124,10 @@ void Roamer::Update(float DeltaTime)
 void Roamer::Render()
 {
 }
+
+XYZEngine::GameObject Roamer::GetGameObject()
+{
+    return *gameObject;
+}
+
 } // namespace XYZRoguelike

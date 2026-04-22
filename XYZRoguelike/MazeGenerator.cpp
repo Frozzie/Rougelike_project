@@ -82,10 +82,10 @@ namespace XYZRoguelike
             std::pair<int, int> pos = stackMem.top();
             stackMem.pop();
 
-            /*level->roamers.push_back(std::make_unique<Roamer>());
+            level->roamers.push_back(std::make_unique<Roamer>()); // gives a unresolved external symbol error, idk how to fix cuz everything seems fine
 
-            auto gameObject = level->roamers.back()->GetGameObject();
-            gameObject->GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(pos.first, pos.second);*/
+			auto gameObject = level->roamers.back()->GetGameObject(); // second error here, no idea how to fix
+            gameObject.GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(pos.first, pos.second);
         }
     }
 
