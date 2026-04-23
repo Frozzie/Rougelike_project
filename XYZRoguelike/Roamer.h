@@ -17,10 +17,11 @@ class Roamer : public XYZEngine::Component
     //Roamer();
     //Roamer(XYZEngine::GameObject *gameObject);
     Roamer(const XYZEngine::Vector2Df vector);
+    ~Roamer();
 
     void Update(float DeltaTime) override;
     void Render() override;
-    XYZEngine::GameObject GetGameObject();
+    //XYZEngine::GameObject GetGameObject();
 
     XYZEngine::Vector2Df Dir;
 

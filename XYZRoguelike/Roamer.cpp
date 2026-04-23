@@ -215,9 +215,14 @@ void Roamer::Render()
 {
 }
 
-XYZEngine::GameObject Roamer::GetGameObject()
+Roamer::~Roamer()
 {
-    return *gameObject;
+
 }
+
+//XYZEngine::GameObject Roamer::GetGameObject()
+//{
+//    return *gameObject;
+//}
 
 } // namespace XYZRoguelike

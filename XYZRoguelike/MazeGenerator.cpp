@@ -82,13 +82,10 @@ namespace XYZRoguelike
             XYZEngine::Vector2Df vector;
             std::pair<int, int> pos = stackMem.top();
             stackMem.pop();
-            vector.x = pos.first;
-            vector.y = pos.second;
+            vector.x = pos.first * 128.f;
+            vector.y = pos.second * 128.f;
 
-            level->roamers.push_back(std::make_unique<Roamer>(vector)); // gives a unresolved external symbol error, idk how to fix cuz everything seems fine
-
-			auto gameObject = level->roamers.back()->GetGameObject(); // second error here, no idea how to fix
-            gameObject.GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(vector);
+			level->roamers.push_back(std::make_unique<Roamer>(vector));
         }
     }
 

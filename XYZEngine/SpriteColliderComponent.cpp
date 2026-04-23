@@ -16,6 +16,7 @@ namespace XYZEngine
 		sprite = gameObject->GetComponent<SpriteRendererComponent>()->GetSprite();
 		PhysicsSystem::Instance()->Subscribe(this);
 	}
+
 	SpriteColliderComponent::~SpriteColliderComponent()
 	{
 		if (&bounds != nullptr)
