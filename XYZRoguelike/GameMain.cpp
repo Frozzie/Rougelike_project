@@ -66,7 +66,7 @@ int main()
 			lvl_switch = false;
             if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 1 )
             {
-                for (auto& i : lvl_1->roamerPos)
+                for (auto &i : lvl_1->roamerPos)
                 {
                     lvl_1->roamers.push_back(std::make_unique<XYZRoguelike::Roamer>(i));
 					lvl_1->player->GetGameObject()->GetComponent<TransformComponent>()->SetWorldPosition({ 15 / 2 * 128.f, 15 / 2 * 128.f });
@@ -84,7 +84,8 @@ int main()
 
         if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 1)
         {
-            if (lvl_1->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f && flag)
+            if ((lvl_1->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f && flag)
+                || (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)))
             {
                 XYZEngine::Engine::Instance()->Set_cur_lvl(2);
                 lvl_switch = true;
@@ -92,23 +93,14 @@ int main()
 		}
         else if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 2)
         {
-            if (lvl_2->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f && flag)
+            if ((lvl_2->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f && flag)
+                || (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)))
             {
                 XYZEngine::Engine::Instance()->Set_cur_lvl(1);
                 lvl_switch = true;
             }
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-        {
-            XYZEngine::Engine::Instance()->Set_cur_lvl(1);
-            lvl_switch = true;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-        {
-            XYZEngine::Engine::Instance()->Set_cur_lvl(2);
-            lvl_switch = true;
-        }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
         {

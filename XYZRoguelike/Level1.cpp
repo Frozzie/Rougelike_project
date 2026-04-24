@@ -9,7 +9,7 @@ namespace XYZRoguelike
 {
     void Level1::Start()
     {
-        gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Level_1");
+        //gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Level_1");
         
         int width = 15;
         int height = 15;

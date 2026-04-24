@@ -40,7 +40,7 @@ namespace XYZEngine
 		GameWorld::Instance()->Update(deltaTime);
 		GameWorld::Instance()->FixedUpdate(deltaTime);
 		GameWorld::Instance()->Render();
-		GameWorld::Instance()->LateUpdate(); // bug in here??
+		GameWorld::Instance()->LateUpdate();
 
 		RenderSystem::Instance()->GetMainWindow().display();
 	}
