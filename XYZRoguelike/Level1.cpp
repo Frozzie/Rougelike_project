@@ -92,7 +92,6 @@ namespace XYZRoguelike
         // Maze Generator
         MazeGenerator mazeGenerator(width, height, this);
         mazeGenerator.Generate();
-
         
         /*for (int i = roamers.size() - 1; i >= 0; i--)
         {

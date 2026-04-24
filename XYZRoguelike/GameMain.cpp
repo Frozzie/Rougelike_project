@@ -46,7 +46,6 @@ int main()
             lvl_2->Stop(); // Stops previous level
 			//cur_lvl = lvl_1; // Sets current level to new level
 			lvl_1->Start(); // Starts new level
-			lvl_switch = false; // Resets flag to make sure the switch only happens once per level change
             dt = sf::Time::Zero + sf::seconds(01.f);
         }
         else if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 2 && lvl_switch)
@@ -54,7 +53,6 @@ int main()
             lvl_1->Stop();
             //cur_lvl = lvl_2;
             lvl_2->Start();
-            lvl_switch = false;
             dt = sf::Time::Zero + sf::seconds(01.f);
         }
         
@@ -63,6 +61,26 @@ int main()
         // needs more debugging!!!!
         // maybe related to the bug that's causing for roamer update to not work? not sure
 
+        if (lvl_switch)
+        {
+			lvl_switch = false;
+            if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 1 )
+            {
+                for (auto& i : lvl_1->roamerPos)
+                {
+                    lvl_1->roamers.push_back(std::make_unique<XYZRoguelike::Roamer>(i));
+					lvl_1->player->GetGameObject()->GetComponent<TransformComponent>()->SetWorldPosition({ 15 / 2 * 128.f, 15 / 2 * 128.f });
+                }
+            }
+            else if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 2)
+            {
+                for (auto& i : lvl_2->roamerPos)
+                {
+                    lvl_2->roamers.push_back(std::make_unique<XYZRoguelike::Roamer>(i));
+                    lvl_2->player->GetGameObject()->GetComponent<TransformComponent>()->SetWorldPosition({ 15 / 2 * 128.f, 15 / 2 * 128.f });
+                }
+            }
+        }
 
         if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 1)
         {
@@ -108,7 +126,6 @@ int main()
             }
         }
     }
-
 
     return 0;
 }
