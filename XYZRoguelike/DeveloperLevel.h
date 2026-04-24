@@ -34,7 +34,7 @@ class DeveloperLevel : public Scene
 
     std::vector<std::unique_ptr<Wall>> walls;
     std::vector<std::unique_ptr<Floor>> floors;
-    std::vector<std::unique_ptr<Roamer>> roamers;
+    std::vector<std::unique_ptr<Roamer>> roamers; // maybe needs to be a component for the update to work
     std::shared_ptr<Player> player;
     std::unique_ptr<Music> music;
 

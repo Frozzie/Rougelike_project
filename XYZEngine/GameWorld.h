@@ -15,6 +15,7 @@ namespace XYZEngine
 		void Render();
 		void LateUpdate();
 
+		void AddGameObject(GameObject* gameObj);
 		GameObject* CreateGameObject();
 		GameObject* CreateGameObject(std::string name);
 		void DestroyGameObject(GameObject* gameObject);

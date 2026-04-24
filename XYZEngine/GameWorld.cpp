@@ -16,6 +16,7 @@ namespace XYZEngine
 			i->Update(deltaTime);
 		}
 	}
+
 	void GameWorld::FixedUpdate(float deltaTime)
 	{
 		fixedCounter += deltaTime;
@@ -39,19 +40,27 @@ namespace XYZEngine
 			DestroyGameObjectImmediate(markedToDestroyGameObjects[i]);
 		}
 	}
+	
+	void GameWorld::AddGameObject(GameObject* gameObj)
+	{
+		gameObjects.push_back(gameObj);
+	}
 
 	GameObject* GameWorld::CreateGameObject()
 	{
 		GameObject* newGameObject = new GameObject();
+		
 		gameObjects.push_back(newGameObject);
 		return newGameObject;
 	}
+
 	GameObject* GameWorld::CreateGameObject(std::string name)
 	{
 		GameObject* newGameObject = new GameObject(name);
 		gameObjects.push_back(newGameObject);
 		return newGameObject;
 	}
+
 	void GameWorld::DestroyGameObject(GameObject* gameObject)
 	{
 		markedToDestroyGameObjects.push_back(gameObject);

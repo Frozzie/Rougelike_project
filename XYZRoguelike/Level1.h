@@ -20,6 +20,7 @@ namespace XYZRoguelike
     public:
 
         void Start() override;
+        XYZEngine::GameObject* gameObject;
 
     private:
     };

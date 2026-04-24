@@ -9,6 +9,8 @@ namespace XYZRoguelike
 {
     void Level1::Start()
     {
+        gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Level_1");
+        
         int width = 15;
         int height = 15;
 
@@ -90,6 +92,20 @@ namespace XYZRoguelike
         // Maze Generator
         MazeGenerator mazeGenerator(width, height, this);
         mazeGenerator.Generate();
+
+        
+        /*for (int i = roamers.size() - 1; i >= 0; i--)
+        {
+            auto gameObj = *roamers[i].get()->GetGameObject();
+            auto roamer = gameObject->AddComponent<Roamer>();
+            roamer->GetGameObject()->GetComponent<TransformComponent>()->SetWorldPosition(gameObj.GetComponent<TransformComponent>()->GetWorldPosition());
+            roamer->GetGameObject()->GetComponent<TransformComponent>()->SetDir(gameObj.GetComponent<TransformComponent>()->GetDir());
+            roamer->GetGameObject()->AddComponent<SpriteRendererComponent>()->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureMapElementShared("enemy", 0));
+            roamer->GetGameObject()->AddComponent<SpriteColliderComponent>();
+            roamer->GetGameObject()->AddComponent<RigidbodyComponent>()->SetKinematic(false);
+			//roamers.erase(roamers.begin() + i);
+        } probably doesnt work, and shouldnt work*/
+        
 
         //int num = Get_cur_lvl();
 

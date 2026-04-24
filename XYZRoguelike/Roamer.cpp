@@ -133,7 +133,7 @@ Roamer::Roamer(XYZEngine::Vector2Df vector)// : Roamer()
     speed = 250.f;
 
     gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Roamer");
-
+    
     auto transform = gameObject->GetComponent<XYZEngine::TransformComponent>();
     gameObject->GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(vector);
     transform->SetDir(Dir);
@@ -197,6 +197,7 @@ Roamer::Roamer(XYZEngine::Vector2Df vector)// : Roamer()
     auto collider = gameObject->AddComponent<XYZEngine::SpriteColliderComponent>();
     collider->SubscribeCollision(flip);
 	
+    //XYZEngine::GameWorld::Instance()->AddGameObject(gameObject); // this maybe works? Needs testing
 }
 
 void Roamer::Update(float DeltaTime)

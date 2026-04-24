@@ -58,11 +58,13 @@ int main()
             dt = sf::Time::Zero + sf::seconds(01.f);
         }
         
-        XYZEngine::Engine::Instance()->Run(dt); //freaks out for a few frames then calms down to normal, cause unknown
-        //roamer update is making it crash i think
+        XYZEngine::Engine::Instance()->Run(dt);
+        // something in the engine is making the positions freak out during the first step.
+        // needs more debugging!!!!
+        // maybe related to the bug that's causing for roamer update to not work? not sure
 
 
-        /*if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 1)
+        if (XYZEngine::Engine::Instance()->Get_cur_lvl() == 1)
         {
             if (lvl_1->GetPlayer()->GetGameObject()->GetComponent<TransformComponent>()->GetWorldPosition().y >= 1800.f && flag)
             {
@@ -77,7 +79,7 @@ int main()
                 XYZEngine::Engine::Instance()->Set_cur_lvl(1);
                 lvl_switch = true;
             }
-        }*/
+        }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
         {

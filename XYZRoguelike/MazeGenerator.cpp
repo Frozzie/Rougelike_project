@@ -86,6 +86,8 @@ namespace XYZRoguelike
             vector.y = pos.second * 128.f;
 
 			level->roamers.push_back(std::make_unique<Roamer>(vector));
+
+            
         }
     }
 
