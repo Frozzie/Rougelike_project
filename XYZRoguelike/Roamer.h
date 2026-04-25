@@ -6,6 +6,7 @@
 #include "MovementComponent.h"
 #include "SpriteColliderComponent.h"
 #include "SpriteDirectionComponent.h"
+#include "EnemyMoveComponent.h"
 
 namespace XYZRoguelike
 {

@@ -68,7 +68,8 @@ int main()
             {
                 for (auto &i : lvl_1->roamerPos)
                 {
-                    lvl_1->roamers.push_back(std::make_unique<XYZRoguelike::Roamer>(i));
+                    lvl_1->roamers.push_back(std::make_shared<XYZRoguelike::Roamer>(i));
+                    //XYZEngine::GameWorld::Instance()->AddGameObject(lvl_1->roamers.back()->GetGameObject());
 					lvl_1->player->GetGameObject()->GetComponent<TransformComponent>()->SetWorldPosition({ 15 / 2 * 128.f, 15 / 2 * 128.f });
                 }
             }
@@ -76,7 +77,7 @@ int main()
             {
                 for (auto& i : lvl_2->roamerPos)
                 {
-                    lvl_2->roamers.push_back(std::make_unique<XYZRoguelike::Roamer>(i));
+                    lvl_2->roamers.push_back(std::make_shared<XYZRoguelike::Roamer>(i));
                     lvl_2->player->GetGameObject()->GetComponent<TransformComponent>()->SetWorldPosition({ 15 / 2 * 128.f, 15 / 2 * 128.f });
                 }
             }

@@ -130,13 +130,17 @@ Roamer::Roamer(XYZEngine::Vector2Df vector)// : Roamer()
         Dir.y = 0;
     }
 
-    speed = 250.f;
-
+    //gameObject = new GameObject;
     gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Roamer");
     
     auto transform = gameObject->GetComponent<XYZEngine::TransformComponent>();
     gameObject->GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(vector);
     transform->SetDir(Dir);
+
+    auto movement = gameObject->AddComponent<XYZEngine::EnemyMoveComponent>();
+    movement->SetGameObject(gameObject);
+    movement->SetDir(Dir);
+    movement->SetPos(transform->GetWorldPosition());
 
     auto renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
     renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureMapElementShared("enemy", 0));
@@ -154,26 +158,26 @@ Roamer::Roamer(XYZEngine::Vector2Df vector)// : Roamer()
     // Function for flipping direction after a collision
 
     flip = [](XYZEngine::Collision collision) {
-        if (collision.getCollider()->GetGameObject()->GetName() != collision.getCollidee()->GetGameObject()->GetName())
+        if (collision.getCollider()->GetGameObject()->GetName() == "Roamer")
         {
             // dir is impossible to get straight from the class, but by saving it in a component, its now easily
             // accesible
             XYZEngine::Vector2Df dir;
-            dir = collision.getCollider()->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->GetDir();
+            dir = collision.getCollider()->GetGameObject()->GetComponent<XYZEngine::EnemyMoveComponent>()->GetDir();
             XYZEngine::Vector2Df pos = collision.getCollider()
                 ->GetGameObject()
-                ->GetComponent<XYZEngine::TransformComponent>()
-                ->GetWorldPosition();
+                ->GetComponent<XYZEngine::EnemyMoveComponent>()
+                ->GetPos();
 
             // "Bumping" the roamer away from the collision so he wouldnt get stuck in them
             if (dir.x > 0)
             {
-                pos.x -= 20.f;
+                pos.x -= 15.f;
                 dir.x = -1.f;
             }
             else if (dir.x < 0)
             {
-                pos.x += 20.f;
+                pos.x += 15.f;
                 dir.x = 1.f;
             }
             if (dir.y > 0)
@@ -188,9 +192,8 @@ Roamer::Roamer(XYZEngine::Vector2Df vector)// : Roamer()
             }
 
             // Saving the updated variables in roamer
-            collision.getCollider()->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(
-                pos);
-            collision.getCollider()->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetDir(dir);
+            collision.getCollider()->GetGameObject()->GetComponent<XYZEngine::EnemyMoveComponent>()->SetPos(pos);
+            collision.getCollider()->GetGameObject()->GetComponent<XYZEngine::EnemyMoveComponent>()->SetDir(dir);
         }
         };
 
@@ -209,7 +212,7 @@ void Roamer::Update(float DeltaTime)
     pos.x += DeltaTime * Dir.x * speed;
     pos.y += DeltaTime * Dir.y * speed;
 
-    gameObject->GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(pos);
+    gameObject->GetComponent<XYZEngine::TransformComponent>()->SetWorldPosition(pos); // THIS NEEDS TO BE A COMPONENT TO ROAMER TO WORK
 }
 
 void Roamer::Render()
